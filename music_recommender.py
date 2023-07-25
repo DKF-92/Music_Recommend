@@ -23,9 +23,18 @@ print(tracks.isnull().sum())
 #drops unneeded columns
 tracks = tracks.drop(['id'], axis=1)
 
+"""""
 # use t-SNE for visualization of high dimensional data
 model = TSNE(n_components=2, random_state=0)
 tsne_data = model.fit()
 plt.figure(figsize= (7, 7))
 plt.scatter(tsne_data[:,0], tsne_data[:,1])
 plt.show()
+"""""
+
+# Looks for non unique track names (we will notice some duplicates)
+print(tracks['song_title'].nunique(), tracks.shape)
+
+# drops the duplicate song names
+tracks.drop_duplicates(subset=['song_title'], keep='first', inplace=True)
+print(tracks.shape)
