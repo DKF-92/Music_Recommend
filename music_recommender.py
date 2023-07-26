@@ -81,6 +81,6 @@ def recommend_songs(song_name, data=tracks):
                      ascending= [False, False],
                      inplace= True)
     
-    print(data[['song_title', 'artist']][15:16])
+    print(data[['song_title', 'artist']][2:7])
 
 recommend_songs('Redbone')
